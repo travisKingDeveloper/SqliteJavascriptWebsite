@@ -5,7 +5,8 @@ CREATE TABLE Employee(
    EmployeeID     CHAR(36) NOT NULL PRIMARY KEY,
    Name           TEXT     NOT NULL,
    BirthDate      DATE     NOT NULL,
-   Address        TEXT,
-   Salary         REAL,
-   IsActive
+   StartDate      DATE     NOT NULL,
+   EndDate        DATE,
+   Salary         REAL     NOT NULL,
+   IsActive       BOOLEAN  NOT NULL
 );
