@@ -3,8 +3,8 @@
  */
 let Router = new require('restify-router').Router()
 
-let employeeRoutes = require('./employee')
-let toolsRoutes = require('./tools')
+let employeeRoutes = require('./employee/index')
+let toolsRoutes = require('./tools/index')
 
 Router.add('/tools', toolsRoutes)
 Router.add('/employee', employeeRoutes)

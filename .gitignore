@@ -1,4 +1,4 @@
 # Created by .ignore support plugin (hsz.mobi)
-api/db/employees.db
+api/src/db/employees.db
 .env
 node_modules

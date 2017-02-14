@@ -5,5 +5,5 @@ var Router = require('restify-router').Router;
 var toolsInstance = new Router();
 
 let healthCheck = (req, res, next) => {
-    res.
+
 }
