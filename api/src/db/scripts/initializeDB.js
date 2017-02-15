@@ -8,13 +8,13 @@ let glob = require('glob')
 
 let config = require('../../config')
 
-var employees = new sqlite3.Database('../employees.db', sqlite3.OPEN_READWRITE, (err) => {
+let employees = new sqlite3.Database('../employees.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.log(`Error opening database employees.db ${err}`)
     } else {
         console.log('SQLITE DB employees.db opened successfully.')
     }
-})
+});
 
 let callFile = (fn, db) => {
     fs.readFile(fn, {}, (err, sql) => {
@@ -27,7 +27,6 @@ let callFile = (fn, db) => {
         }
     })
 }
-
 
 module.exports.initializeDB = () => {
 

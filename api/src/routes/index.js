@@ -1,12 +1,13 @@
 /**
  * Created by trKing on 2/14/2017.
  */
-let Router = new require('restify-router').Router()
+let Router = require('restify-router').Router
+let allRoutes = new Router()
 
-let employeeRoutes = require('./employee/index')
-let toolsRoutes = require('./tools/index')
+let employeeRoutes = require('./employee')
+let toolsRoutes = require('./tools')
 
-Router.add('/tools', toolsRoutes)
-Router.add('/employee', employeeRoutes)
+allRoutes.add('/tools', toolsRoutes)
+allRoutes.add('/employee', employeeRoutes)
 
-module.exports = Router
+module.exports = allRoutes

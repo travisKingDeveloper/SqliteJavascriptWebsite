@@ -3,3 +3,4 @@ api/src/db/employees.db
 .env
 node_modules
 .idea
+npm-debug.log
