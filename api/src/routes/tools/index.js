@@ -10,6 +10,6 @@ let healthCheck = (req, res, next) => {
     next()
 }
 
-toolsInstance.get('/status' , healthCheck)
+toolsInstance.get('/status', healthCheck)
 
 module.exports = toolsInstance
