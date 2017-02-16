@@ -5,28 +5,14 @@
 let Router = require('restify-router').Router
 let uuid = require('node-uuid');
 let employeeInstance = new Router()
-let {insertEmployee} = require('./employee')
+let {insertEmployee, selectAllEmployees} = require('./employee')
 
-// insertEmployee({
-// //EmployeeID, Name, StartDate, EndDate, Salary, IsActive
-//     employeeID: '8161e8d9-f4d7-41bb-846a-577b2ac90f24',
-//     name: 'Travis',
-//     startDate: Date.now(),
-//     salary: 123456,
-//     isActive: false
-// }).then((result) => {
-//     console.log('result ' + result)
-// }).catch((err) => {
-//     console.log(`insertEmployee ${err}`)
-// })
-
-employeeInstance.post('/employee', (req, res, next) => {
-    let {name, startDate, salary, isActive} = req.body;
+employeeInstance.post('/', (req, res, next) => {
     let employee = {
-        name: name,
-        startDate: startDate,
-        salary: salary,
-        isActive: isActive,
+        name: req.body.name,
+        startDate: req.body.startDate,
+        salary: req.body.salary,
+        isActive: req.body.isActive,
         employeeID: uuid.v4()
     }
 
@@ -37,9 +23,21 @@ employeeInstance.post('/employee', (req, res, next) => {
         })
         .catch((err) => {
             res.send(JSON.stringify({
-                error: err,
+                error: err.message,
                 success: false
             }))
+            next()
+        })
+})
+
+employeeInstance.get('/', (req, res, next) => {
+    selectAllEmployees()
+        .then((results) => {
+            res.send(results)
+            next()
+        })
+        .catch((err) => {
+            res.send(JSON.stringify(err))
             next()
         })
 })
