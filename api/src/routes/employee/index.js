@@ -7,7 +7,7 @@ let uuid = require('node-uuid');
 let employeeInstance = new Router()
 let {insertEmployee, selectAllEmployees, selectOneEmployee, updateEmployee, deleteEmployee} = require('./employee')
 
-employeeInstance.post('/', (req, res, next) => {
+employeeInstance.post('/employee', (req, res, next) => {
     let employee = {
         name: req.body.name,
         startDate: req.body.startDate,
@@ -30,7 +30,7 @@ employeeInstance.post('/', (req, res, next) => {
         })
 })
 
-employeeInstance.get('/', (req, res, next) => {
+employeeInstance.get('/employees', (req, res, next) => {
     selectAllEmployees()
         .then((results) => {
             res.send(results)
@@ -42,7 +42,7 @@ employeeInstance.get('/', (req, res, next) => {
         })
 })
 
-employeeInstance.get('/:employeeID', (req, res, next) => {
+employeeInstance.get('/employee/:employeeID', (req, res, next) => {
     let employeeID = req.params.employeeID
 
     selectOneEmployee(employeeID)
@@ -56,7 +56,7 @@ employeeInstance.get('/:employeeID', (req, res, next) => {
         })
 })
 
-employeeInstance.put('/:employeeID', (req, res, next) => {
+employeeInstance.put('/employee/:employeeID', (req, res, next) => {
     let employee = {
         name: req.body.name,
         startDate: req.body.startDate,
@@ -76,7 +76,7 @@ employeeInstance.put('/:employeeID', (req, res, next) => {
         })
 })
 
-employeeInstance.del('/:employeeID', (req, res, next) => {
+employeeInstance.del('/employee/:employeeID', (req, res, next) => {
     let employeeID = req.params.employeeID
 
     deleteEmployee(employeeID)

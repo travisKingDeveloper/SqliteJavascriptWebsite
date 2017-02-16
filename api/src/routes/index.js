@@ -8,6 +8,6 @@ let employeeRoutes = require('./employee')
 let toolsRoutes = require('./tools')
 
 allRoutes.add('/tools', toolsRoutes)
-allRoutes.add('/employee', employeeRoutes)
+allRoutes.add('/data', employeeRoutes)
 
 module.exports = allRoutes
